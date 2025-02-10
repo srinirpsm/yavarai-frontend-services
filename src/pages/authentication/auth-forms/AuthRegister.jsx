@@ -32,6 +32,7 @@ export default function AuthRegister() {
   const [level, setLevel] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const [apiError, setApiError] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -66,10 +67,9 @@ export default function AuthRegister() {
         onSubmit={async (values, { setSubmitting, setErrors }) => {
           setApiError(null);
           try {
-            const response = await axios.post('http://127.0.0.1:8000/auth/register', values, {
+            const response = await axios.post(`${API_URL}/auth/register`, values, {
               headers: { 'Content-Type': 'application/json' }
             });
-
             console.log('Registration successful:', response.data);
             navigate('/login'); // Redirect to login page
 

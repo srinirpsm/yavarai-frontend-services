@@ -14,12 +14,13 @@ export default function DashboardDefault() {
     pending: 0,
     todayDues: 0
   });
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('access_token');
-        const response = await fetch('http://127.0.0.1:8000/tasks', {
+        const response = await fetch(`${API_URL}/tasks`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await response.json();

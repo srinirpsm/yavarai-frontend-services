@@ -74,12 +74,13 @@ OrderStatus.propTypes = { priority: PropTypes.string };
 export default function OrderTable() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
 
 
-    axios.get('http://127.0.0.1:8000/tasks/insights', {
+    axios.get(`${API_URL}/tasks/insights`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

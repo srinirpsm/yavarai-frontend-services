@@ -61,12 +61,13 @@ const columnChartOptions = {
 export default function SalesChart() {
   const theme = useTheme();
   const [series, setSeries] = useState([{ name: 'Tasks', data: [0, 0] }]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('access_token');
-        const response = await axios.get('http://127.0.0.1:8000/tasks', {
+        const response = await axios.get(`${API_URL}/tasks`, {
           headers: { Authorization: `Bearer ${token}` }
         }); 
         const data =  response.data; 

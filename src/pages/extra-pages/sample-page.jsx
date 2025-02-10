@@ -5,9 +5,9 @@ import {
   Paper, Typography, Select, MenuItem, TextField, Dialog, DialogActions, 
   DialogContent, DialogTitle 
 } from '@mui/material';
-import MainCard from 'components/MainCard';
+import MainCard from 'components/MainCard'; 
 
-const API_URL = 'http://127.0.0.1:8000/tasks';
+const API_URL = `${import.meta.env.VITE_API_URL}/tasks`;
 const AUTH_TOKEN = localStorage.getItem("access_token");
 
 export default function TaskManager() {
